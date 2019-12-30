@@ -12,9 +12,10 @@
     <title>Minimal Youtube</title>
 </head>
 <body>
+    <!--Searchbar Container-->
     <div class="container" id="search">
-        <div class="row justify-content-md-center">
-            <div class="input-group col-sm-8 mb-5 mt-4">
+        <div class="row justify-content-center" id="searchrow">
+            <div class="input-group col-8 mb-5 mt-4" id="input">
                 <input type="text" class="form-control" placeholder="Search YouTube" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">
@@ -25,43 +26,145 @@
         </div>
     </div>
 
+    <!-- Placeholder Cards -->
     <div class="container" id="results">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/hHW1oY26kxQ/hqdefault_live.jpg" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <h5 class="card-title">lofi hip hop radio - beats to relax/study to</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Thank you for listening, I hope you will have a good time here :) 🧡Join the ChilledCow family to get awesome perks ...</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/EcEMX-63PKY/hqdefault_live.jpg" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <h5 class="card-title">lofi hip hop radio - beats to sleep/chill to </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall ...</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                <div class="card">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/bebuiaSKtU4/hqdefault_live.jpg" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <h5 class="card-title">short title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Chillhop Music</h6>
+                        <p class="card-text text-muted">We hope you enjoy these chill lofi hip hop tunes while studying / chilling / working. ♥ Lofi Hip Hop Playlists ↪︎ Spotify: ...</p>
                     </div>
                 </div>
             </div>
+
+            <!-- <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/hHW1oY26kxQ/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to relax/study to</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Thank you for listening, I hope you will have a good time here :) 🧡Join the ChilledCow family to get awesome perks ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/EcEMX-63PKY/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to sleep/chill to </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/bebuiaSKtU4/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">short title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Chillhop Music</h6>
+                        <p class="card-text text-muted">We hope you enjoy these chill lofi hip hop tunes while studying / chilling / working. ♥ Lofi Hip Hop Playlists ↪︎ Spotify: ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/hHW1oY26kxQ/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to relax/study to</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Thank you for listening, I hope you will have a good time here :) 🧡Join the ChilledCow family to get awesome perks ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/EcEMX-63PKY/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to sleep/chill to </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/bebuiaSKtU4/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">short title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Chillhop Music</h6>
+                        <p class="card-text text-muted">We hope you enjoy these chill lofi hip hop tunes while studying / chilling / working. ♥ Lofi Hip Hop Playlists ↪︎ Spotify: ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/hHW1oY26kxQ/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to relax/study to</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Thank you for listening, I hope you will have a good time here :) 🧡Join the ChilledCow family to get awesome perks ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/EcEMX-63PKY/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">lofi hip hop radio - beats to sleep/chill to </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ChilledCow</h6>
+                        <p class="card-text text-muted">Welcome to the sleepy lofi hip hop radio. This playlist contains the smoothest lofi hip hop beats, perfect to help you chill or fall ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card h-100">
+                    <img src="https://i.ytimg.com/vi/bebuiaSKtU4/mqdefault_live.jpg" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">short title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Chillhop Music</h6>
+                        <p class="card-text text-muted">We hope you enjoy these chill lofi hip hop tunes while studying / chilling / working. ♥ Lofi Hip Hop Playlists ↪︎ Spotify: ...</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        
+
+        
         </div>
     </div>
 
