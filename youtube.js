@@ -21,7 +21,7 @@ class Youtube {
         const request = await gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            maxResults: 1,
+            maxResults: 9,
             q: term
         });
         return request;
