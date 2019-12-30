@@ -1,5 +1,9 @@
-.card-img-top {
+.search-result-card {
     width: 100%;
     height: 10rem;
     object-fit: cover;
+}
+
+.video-card {
+    width: 100%;
 }
