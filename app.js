@@ -1,7 +1,7 @@
 const ui = new UI;
 const params = new URLSearchParams(document.location.search.substring(1));
 
-if (params.get("v") != null) {
+if (params.get("v") !== null) {
     ui.setSearchInput(params.get("q"));
 
     gapi.load('client', async () => {
@@ -10,7 +10,7 @@ if (params.get("v") != null) {
         ui.displayVideo(request);
     });
 
-} else if (params.get("q") != null) {
+} else if (params.get("q") !== null) {
     ui.setSearchInput(params.get("q"));
 
     gapi.load('client', async () => {
@@ -34,21 +34,27 @@ if (params.get("v") != null) {
 
 
 ui.search_button.addEventListener("click", (e) => {
-    if (ui.getSearchInput() != "") {
+    if (ui.getSearchInput() !== "") {
         e.preventDefault();
         const search_params = new URLSearchParams();
         search_params.append("q", ui.getSearchInput());
         window.location = `results.html?${search_params.toString()}`;
+    } else {
+        e.preventDefault();
+        window.location = 'index.html';
     }
     
 });
 
 ui.search_box.addEventListener("keydown", (e) => {
-    if (e.keyCode === 13 && ui.getSearchInput() != "") {
+    if (e.keyCode === 13 && ui.getSearchInput() !== "") {
         e.preventDefault();
         const searchParams = new URLSearchParams();
         searchParams.append("q", ui.getSearchInput());
         window.location = `results.html?${searchParams.toString()}`;
+    } else if (e.keyCode === 13 && ui.getSearchInput() === "") {
+        e.preventDefault();
+        window.location = 'index.html';
     }
 });
 
