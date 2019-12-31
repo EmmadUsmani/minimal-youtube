@@ -11,7 +11,7 @@ class Youtube {
     }
 
     init() {
-        gapi.client.setApiKey("AIzaSyDKkyJaZmoJWDOENOAGK2KMepIQOMzJdsI");
+        gapi.client.setApiKey("AIzaSyD8eHtwlHkLxiivOycFs4gbKWZNCELO1fw");
         gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
             .then(() => console.log("GAPI client loaded"))
             .catch(() => console.error("Error loading GAPI client", err));     
