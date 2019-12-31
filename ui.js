@@ -3,7 +3,6 @@ class UI {
         this.search_box = document.querySelector("#search_box");
         this.search_button = document.querySelector(".search_button");
         this.results_row = document.querySelector("#results_row");
-        this.footer = document.querySelector(".footer");
     }
 
     getSearchInput() {
@@ -16,12 +15,10 @@ class UI {
 
     clear() {
         this.results_row.innerHTML = '';
-        this.footer.style.position = "absolute";
     }
 
     async displaySearchResults(request) {
         this.clear();
-        this.footer.style.position = "relative";
         await request.then(request => {
             const videos = request.result.items;
             videos.forEach(video => {
@@ -51,7 +48,6 @@ class UI {
 
     displayVideo(request) {
         this.clear();
-        this.footer.style.position = "relative";
         request.then(request => {
             const video = request.result.items[0];
             const id = video.id;
@@ -73,6 +69,7 @@ class UI {
             </div>
             `;
             outer_div.querySelector(".description").innerText = description;
+            linkifyElement(outer_div);
             this.results_row.appendChild(outer_div);
         });
     }

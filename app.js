@@ -77,13 +77,3 @@ async function watch(id) {
     });
     return request;
 }
-
-// async function search() {
-//     await ui.displaySearchResults(youtube.search_request);
-//     ui.results_row.childNodes.forEach(outer_div => {
-//         const card = outer_div.childNodes[1];
-//         card.addEventListener(("click"), (e) => {
-//             ui.displayVideo(youtube.watch(card.id));
-//         })
-//     });
-// }
