@@ -10,6 +10,10 @@ class UI {
         return this.search_box.value;
     }
 
+    setSearchInput(term) {
+        this.search_box.value = term;
+    }
+
     clear() {
         this.results_row.innerHTML = '';
         this.footer.style.position = "absolute";
@@ -55,7 +59,6 @@ class UI {
             const channel = video.snippet.channelTitle;
             const date = video.snippet.publishedAt;
             const description = video.snippet.description;
-            console.log(description);
 
             let outer_div = document.createElement("div");
             outer_div.className = "card video-card mb-5";
