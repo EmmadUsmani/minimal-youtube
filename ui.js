@@ -3,6 +3,7 @@ class UI {
         this.search_box = document.querySelector("#search_box");
         this.search_button = document.querySelector(".search_button");
         this.results_row = document.querySelector("#results_row");
+        this.footer = document.querySelector(".footer");
     }
 
     getSearchInput() {
@@ -11,10 +12,12 @@ class UI {
 
     clear() {
         this.results_row.innerHTML = '';
+        this.footer.style.position = "absolute";
     }
 
     async displaySearchResults(request) {
         this.clear();
+        this.footer.style.position = "relative";
         await request.then(request => {
             const videos = request.result.items;
             videos.forEach(video => {
@@ -44,6 +47,7 @@ class UI {
 
     displayVideo(request) {
         this.clear();
+        this.footer.style.position = "relative";
         request.then(request => {
             const video = request.result.items[0];
             const id = video.id;
@@ -54,10 +58,10 @@ class UI {
             console.log(description);
 
             let outer_div = document.createElement("div");
-            outer_div.className = "card video-card mb-3";
+            outer_div.className = "card video-card mb-5";
             outer_div.innerHTML = `
             <div class="card-img-top embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${id}?rel=0" allowfullscreen></iframe>
             </div>
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>

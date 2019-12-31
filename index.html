@@ -14,8 +14,8 @@
 <body>
     <!--Searchbar-->
     <div class="container" id="search">
-        <div class="row justify-content-center" id="searchrow">
-            <div class="input-group col-8 mb-5 mt-4" id="input">
+        <div class="row justify-content-center" id="search_row">
+            <div class="input-group col-12 mb-5 mt-4" id="input">
                 <input type="text" class="form-control form-control-lg" id="search_box" placeholder="Search YouTube" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary search_button" type="button" id="button-addon2">
@@ -28,9 +28,12 @@
 
     <!-- Search Results -->
     <div class="container" id="results_container">
-        <div class="row" id="results_row">
-            
-        </div>
+        <div class="row" id="results_row"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Created by <a href="https://github.com/emmadusmani">Emmad Usmani</a></p>
     </div>
 
     <script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
