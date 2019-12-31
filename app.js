@@ -53,7 +53,7 @@ ui.search_box.addEventListener("keydown", (e) => {
 });
 
 async function initClient() {
-    gapi.client.setApiKey("AIzaSyDKkyJaZmoJWDOENOAGK2KMepIQOMzJdsI"); //TODO: switch api key before pushing
+    gapi.client.setApiKey("AIzaSyD8eHtwlHkLxiivOycFs4gbKWZNCELO1fw");
     await gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(() => {
             console.log("GAPI client loaded")})
