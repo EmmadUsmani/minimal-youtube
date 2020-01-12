@@ -20,6 +20,7 @@ class UI {
     async displaySearchResults(request) {
         this.clear();
         await request.then(request => {
+            console.log(request)
             const videos = request.result.items;
             videos.forEach(video => {
                 const id = video.id.videoId;
@@ -49,12 +50,17 @@ class UI {
     displayVideo(request) {
         this.clear();
         request.then(request => {
+            console.log(request);
             const video = request.result.items[0];
             const id = video.id;
             const title = video.snippet.title;
             const channel = video.snippet.channelTitle;
-            const date = video.snippet.publishedAt;
+            const date = this.formatDate(video.snippet.publishedAt);
             const description = video.snippet.description;
+            const views = parseInt(video.statistics.viewCount).toLocaleString();
+            const likes = parseInt(video.statistics.likeCount).toLocaleString();
+            const dislikes = parseInt(video.statistics.dislikeCount).toLocaleString();
+            console.log(date);
 
             let outer_div = document.createElement("div");
             outer_div.className = "card video-card mb-5";
@@ -65,6 +71,8 @@ class UI {
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${channel}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">${views} views • ${date}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">${likes} likes • ${dislikes} dislikes </h6>
                 <p class="card-text text-muted description">}</p>
             </div>
             `;
@@ -74,5 +82,11 @@ class UI {
         });
     }
 
-   
+    formatDate(date_string) {
+        let str = (new Date(date_string)).toDateString();
+        const re = /\s(.*)/;
+        str = re.exec(str)[1]
+        return str.substr(0, 6) + "," + str.substr(6);
+    }
 }
+

@@ -78,7 +78,7 @@ async function search(term) {
 
 async function watch(id) {
     const request = gapi.client.youtube.videos.list({
-        part: "snippet",
+        part: "snippet, statistics",
         id: id
     });
     return request;
