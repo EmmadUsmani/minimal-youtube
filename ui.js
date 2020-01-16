@@ -71,8 +71,7 @@ class UI {
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${channel}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">${views} views • ${date}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">${likes} likes • ${dislikes} dislikes </h6>
+                <h6 class="card-subtitle mb-2 text-muted">${date} • ${views} views • ${likes} likes • ${dislikes} dislikes </h6>
                 <p class="card-text text-muted description">}</p>
             </div>
             `;
