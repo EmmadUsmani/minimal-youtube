@@ -61,7 +61,6 @@ class UI {
             const views = parseInt(video.statistics.viewCount).toLocaleString();
             const likes = parseInt(video.statistics.likeCount).toLocaleString();
             const dislikes = parseInt(video.statistics.dislikeCount).toLocaleString();
-            console.log(date);
 
             let outer_div = document.createElement("div");
             outer_div.className = "card video-card mb-5";
