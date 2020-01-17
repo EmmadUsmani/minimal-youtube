@@ -27,6 +27,7 @@ class UI {
                 const thumbnail = video.snippet.thumbnails.high.url;
                 const title = video.snippet.title;
                 const channel = video.snippet.channelTitle;
+                const date = this.formatDate(video.snippet.publishedAt);
                 const description = video.snippet.description;
 
                 let outer_div = document.createElement("div");
@@ -36,7 +37,7 @@ class UI {
                     <img src="${thumbnail}" alt="" class="card-img-top search-result-card">
                     <div class="card-body">
                         <h5 class="card-title">${title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${channel}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">${channel} • ${date}</h6>
                         <p class="card-text text-muted">${description}</p>
                         <a href="#" class="stretched-link"> </a>
                     </div>
