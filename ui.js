@@ -20,7 +20,7 @@ class UI {
     async displaySearchResults(request) {
         this.clear();
         await request.then(request => {
-            console.log(request)
+            // console.log(request)
             const videos = request.result.items;
             videos.forEach(video => {
                 const id = video.id.videoId;
@@ -51,7 +51,7 @@ class UI {
     displayVideo(request) {
         this.clear();
         request.then(request => {
-            console.log(request);
+            // console.log(request);
             const video = request.result.items[0];
             const id = video.id;
             const title = video.snippet.title;
