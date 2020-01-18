@@ -1,4 +1,4 @@
-# minimal-youtube
+# Minimal Youtube
 A minimalist YouTube client free from comments, recommendations, and other distractions.
 Simply enter a search term and watch relevant videos. Perfect for looking up music, tutorials, 
 and other videos while doing focused work. Try it [here.](https://emmadusmani.github.io/minimal-youtube/)
