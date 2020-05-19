@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+}
+
+#root {
+  width: calc(100% * 2 / 3);
+  margin: auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+@media all and (min-width: 1200px) {
+  #root {
+    width: 50%;
+  }
+}
+
+@media all and (max-width: 576px) {
+  #root {
+    width: 90%;
+  }
+}
