@@ -1,20 +1,20 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { makeStyles } from "@material-ui/styles";
 import SearchBar from "./components/SearchBar";
 import Watch from "./components/Watch";
 import Search from "./components/Search";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   content: {
     "margin-top": "10px",
     "margin-bottom": "10px",
   },
-});
+}));
 
-function App() {
+export default function App() {
   const classes = useStyles();
 
   return (
@@ -32,5 +32,3 @@ function App() {
     </>
   );
 }
-
-export default App;
