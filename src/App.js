@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/styles";
 import SearchBar from "./components/SearchBar";
 import Watch from "./components/Watch";
 import Search from "./components/Search";
-import Home from "./components/Home";
 import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +23,6 @@ export default function App() {
         <Switch>
           <Route path="/watch" component={Watch} />
           <Route path="/search" component={Search} />
-          <Route path="/" exact component={Home} />
           <Redirect to="/" />
         </Switch>
       </div>

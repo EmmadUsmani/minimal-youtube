@@ -9,14 +9,18 @@ const useStyles = makeStyles((theme) => ({
   input: { "padding-bottom": 7 },
 }));
 
-export default function SearchBar(props) {
+export default function SearchBar() {
   const classes = useStyles();
   const history = useHistory();
   const [query, setQuery] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query) history.push(`/search?q=${query}`);
+    if (query)
+      history.push({
+        pathname: "/search",
+        search: `?q=${query}`,
+      });
   };
 
   const handleChange = (e) => {
@@ -26,7 +30,7 @@ export default function SearchBar(props) {
   return (
     <form onSubmit={handleSubmit}>
       <TextField
-        value={query}
+        value={query || ""}
         onChange={handleChange}
         placeholder="Search Youtube..."
         variant="outlined"
