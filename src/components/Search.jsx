@@ -6,14 +6,14 @@ export default function Search({ history, location }) {
   const { q: query } = queryString.parse(location.search);
   if (!query) history.replace("/");
 
-  const [isLoading, videos] = useFetchResults(query);
+  const [isLoading, results] = useFetchResults(query);
 
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <ul>
-      {videos.map((video) => (
-        <li key={video}>video</li>
+      {results.map((video) => (
+        <li key={video.id.videoId}>{video.snippet.title}</li>
       ))}
     </ul>
   );

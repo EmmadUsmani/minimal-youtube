@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
+import { placeholderData } from "../constants";
 
 export default function useFetchResults(query) {
   const [isLoading, setIsLoading] = useState(false);
-  const [videos, setVideos] = useState([]);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(`Searching for ${query}`);
 
     // simulating search
     setTimeout(() => {
       setIsLoading(false);
-      setVideos(["video1", "video2", "video3", "video4"]);
+      setResults(placeholderData.items);
     }, 2000);
   }, [query]);
 
-  return [isLoading, videos];
+  return [isLoading, results];
 }
