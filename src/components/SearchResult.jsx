@@ -58,7 +58,7 @@ export default function SearchResult({ video }) {
             {title}
           </Typography>
           <Typography variant="caption" component="p">
-            {channelTitle} ·{" "}
+            {`${channelTitle} · `}
             {live ? <span className={classes.span}>LIVE</span> : date}
           </Typography>
           <Typography variant="caption" component="p">
