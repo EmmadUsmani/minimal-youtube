@@ -1,6 +1,7 @@
 import React from "react";
 import queryString from "query-string";
 import useFetchResults from "../hooks/useFetchResults";
+import SearchResult from "./SearchResult";
 
 export default function Search({ history, location }) {
   const { q: query } = queryString.parse(location.search);
@@ -11,10 +12,10 @@ export default function Search({ history, location }) {
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <ul>
+    <>
       {results.map((video) => (
-        <li key={video.id.videoId}>{video.snippet.title}</li>
+        <SearchResult video={video} key={video.id.videoId} />
       ))}
-    </ul>
+    </>
   );
 }
