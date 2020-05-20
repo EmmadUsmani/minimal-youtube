@@ -1,3 +1,7 @@
+export function formatTitle(title) {
+  return title.replace("&amp;", "&").substr(0, 80);
+}
+
 export function formatDate(dateStr) {
   let str = new Date(dateStr).toDateString();
   const re = /\s(.*)/;
