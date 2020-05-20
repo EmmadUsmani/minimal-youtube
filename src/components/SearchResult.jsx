@@ -34,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
     },
   },
-  span: {
-    color: "#CD5C5C",
-    fontSize: "0.9em",
-  },
 }));
 
 export default function SearchResult({ video }) {
@@ -54,12 +50,16 @@ export default function SearchResult({ video }) {
       <CardActionArea className={classes.cardActionArea}>
         <CardMedia image={image} className={classes.cardMedia} />
         <CardContent className={classes.cardContent}>
-          <Typography variant="subtitle1" component="h6">
-            {title}
-          </Typography>
-          <Typography variant="caption" component="p">
+          <Typography variant="subtitle1">{title}</Typography>
+          <Typography variant="caption">
             {`${channelTitle} · `}
-            {live ? <span className={classes.span}>LIVE</span> : date}
+            {live ? (
+              <Typography color="primary" variant="caption">
+                LIVE
+              </Typography>
+            ) : (
+              date
+            )}
           </Typography>
           <Typography variant="caption" component="p">
             {description}

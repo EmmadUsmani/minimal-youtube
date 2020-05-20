@@ -12,7 +12,7 @@ export default function useFetchResults(query) {
     setTimeout(() => {
       setIsLoading(false);
       setResults(placeholderData.items);
-    }, 0);
+    }, 1000);
   }, [query]);
 
   return [isLoading, results];

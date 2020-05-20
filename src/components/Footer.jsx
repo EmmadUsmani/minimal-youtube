@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import { Typography } from "@material-ui/core";
+import { Typography, Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -10,8 +10,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 10,
     textAlign: "center",
   },
-  a: {
-    color: "green",
+  link: {
     textDecoration: "none",
   },
 }));
@@ -20,15 +19,15 @@ function Footer(props) {
   const classes = useStyles();
 
   return (
-    <Typography
-      variant="body2"
-      component="footer"
-      className={classes.typography}
-    >
+    <Typography variant="body2" className={classes.typography}>
       created by{" "}
-      <a href="https://github.com/emmadusmani" className={classes.a}>
+      <Link
+        href="https://github.com/emmadusmani"
+        color="primary"
+        className={classes.link}
+      >
         Emmad Usmani
-      </a>
+      </Link>
     </Typography>
   );
 }

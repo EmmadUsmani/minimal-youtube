@@ -8,8 +8,8 @@ import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    "margin-top": "20px",
-    "padding-bottom": "40px",
+    marginTop: 20,
+    paddingBottom: 30,
   },
 }));
 
