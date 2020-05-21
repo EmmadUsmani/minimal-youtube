@@ -19,8 +19,9 @@ body {
   position: relative;
 }
 
-@media all and (max-width: 576px) {
+@media all and (max-width: 860px) {
   #root {
+    max-width: 600px;
     width: 90%;
   }
 }

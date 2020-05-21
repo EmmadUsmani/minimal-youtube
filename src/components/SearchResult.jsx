@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   cardActionArea: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "flex-start",
     position: "relative",
   },
   cardMedia: {
