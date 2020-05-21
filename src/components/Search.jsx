@@ -1,15 +1,8 @@
 import React from "react";
-import queryString from "query-string";
-import useFetchResults from "../hooks/useFetchResults";
 import Spinner from "./Spinner";
 import SearchResult from "./SearchResult";
 
-export default function Search({ history, location }) {
-  const { q: query } = queryString.parse(location.search);
-  if (!query) history.replace("/");
-
-  const [isLoading, results] = useFetchResults(query);
-
+export default function Search({ isLoading, results }) {
   if (isLoading) return <Spinner />;
 
   return (

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import { TextField, InputAdornment, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,24 +8,23 @@ const useStyles = makeStyles((theme) => ({
   input: { "padding-bottom": 7 },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({ handleQueryChange }) {
   const classes = useStyles();
-  const history = useHistory();
-  const [query, setQuery] = useState();
+  const [input, setInput] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query) history.push(`/search?q=${query}`);
+    handleQueryChange(input);
   };
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
+    setInput(e.target.value);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <TextField
-        value={query || ""}
+        value={input || ""}
         onChange={handleChange}
         placeholder="Search Youtube..."
         variant="outlined"

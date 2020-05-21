@@ -6,6 +6,7 @@ export default function useFetchResults(query) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
+    console.log(query);
     setIsLoading(true);
 
     // simulating search
