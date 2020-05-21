@@ -10,6 +10,8 @@ import {
 import { formatTitle, formatDate } from "../utils";
 import { useHistory } from "react-router-dom";
 
+// TODO: handle small screens (either scale card or switch to vertical card)
+
 const useStyles = makeStyles((theme) => ({
   card: {
     marginBottom: 20,

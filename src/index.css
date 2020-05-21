@@ -13,7 +13,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 70%;
-  max-width: 860px;
   margin: auto;
   min-height: 100vh;
   position: relative;
@@ -23,5 +22,12 @@ body {
   #root {
     max-width: 600px;
     width: 90%;
+  }
+}
+
+@media all and (min-width: 1220px) {
+  #root {
+    min-width: 860px;
+    width: 60%;
   }
 }
