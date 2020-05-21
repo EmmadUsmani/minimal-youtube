@@ -16,5 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Spinner() {
   const classes = useStyles();
+
   return <CircularProgress className={classes.circularProgress} />;
 }

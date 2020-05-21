@@ -6,14 +6,15 @@ export default function useFetchResults(query) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    console.log(query);
-    setIsLoading(true);
+    if (query) {
+      setIsLoading(true);
 
-    // simulating search
-    setTimeout(() => {
-      setIsLoading(false);
-      setResults(placeholderData.items);
-    }, 500);
+      // simulating search
+      setTimeout(() => {
+        setIsLoading(false);
+        setResults(placeholderData.items);
+      }, 500);
+    }
   }, [query]);
 
   return [isLoading, results];
