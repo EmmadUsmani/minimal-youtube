@@ -8,6 +8,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { formatTitle, formatDate } from "../utils";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -38,16 +39,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchResult({ video }) {
   const classes = useStyles();
+  const history = useHistory();
+
   const image = video.snippet.thumbnails.high.url;
   const title = formatTitle(video.snippet.title);
   const channelTitle = video.snippet.channelTitle;
   const live = video.snippet.liveBroadcastContent === "live";
   const date = formatDate(video.snippet.publishedAt);
   const description = video.snippet.description;
+  const videoId = video.id.videoId;
+
+  const handleClick = () => {
+    history.push(`/watch?v=${videoId}`);
+  };
 
   return (
     <Card className={classes.card}>
-      <CardActionArea className={classes.cardActionArea}>
+      <CardActionArea className={classes.cardActionArea} onClick={handleClick}>
         <CardMedia image={image} className={classes.cardMedia} />
         <CardContent className={classes.cardContent}>
           <Typography variant="subtitle1">{title}</Typography>

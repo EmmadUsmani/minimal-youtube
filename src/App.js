@@ -30,3 +30,5 @@ export default function App() {
     </>
   );
 }
+
+// TODO: lift query, results (and isLoading?) state here

@@ -16,11 +16,7 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query)
-      history.push({
-        pathname: "/search",
-        search: `?q=${query}`,
-      });
+    if (query) history.push(`/search?q=${query}`);
   };
 
   const handleChange = (e) => {
