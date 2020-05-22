@@ -25,10 +25,10 @@ export default function App() {
   const [isSearching, results] = useFetchResults(query);
   const [isLoading, video] = useFetchVideo(videoId);
 
-  const handleQuery = (input) => {
+  const handleQuery = (input, redirect = true) => {
     if (input) {
       setQuery(input);
-      history.push(`/search`);
+      if (redirect) history.push(`/search?q=${input}`);
     }
   };
 
@@ -59,8 +59,10 @@ export default function App() {
             render={(props) => (
               <Search
                 {...props}
+                handleQuery={handleQuery}
                 handleVideo={handleVideo}
                 isSearching={isSearching}
+                query={query}
                 results={results}
               />
             )}
