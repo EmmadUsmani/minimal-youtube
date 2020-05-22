@@ -8,7 +8,6 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { formatTitle, formatDate } from "../utils";
-import { useHistory } from "react-router-dom";
 
 // TODO: handle small screens (either scale card or switch to vertical card)
 
@@ -42,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchResult({ handleVideo, video }) {
   const classes = useStyles();
-  const history = useHistory();
 
   const image = video.snippet.thumbnails.high.url;
   const title = formatTitle(video.snippet.title);
@@ -51,10 +49,6 @@ export default function SearchResult({ handleVideo, video }) {
   const date = formatDate(video.snippet.publishedAt);
   const description = video.snippet.description;
   const videoId = video.id.videoId;
-
-  const handleClick = () => {
-    history.push(`/watch?v=${videoId}`);
-  };
 
   return (
     <Card className={classes.card}>
