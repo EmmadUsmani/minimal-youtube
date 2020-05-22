@@ -1,10 +1,16 @@
 import React from "react";
 import Player from "./Player";
 import Spinner from "./Spinner";
-import { Typography } from "@material-ui/core";
+import { Typography, makeStyles } from "@material-ui/core";
 
-export default function Watch({ history, location, video, isLoading }) {
-  console.log(video, isLoading);
+const useStyles = makeStyles((theme) => ({
+  title: {
+    marginTop: 10,
+  },
+}));
+
+export default function Watch({ video, isLoading }) {
+  const classes = useStyles();
 
   if (isLoading) return <Spinner />;
 
@@ -12,7 +18,9 @@ export default function Watch({ history, location, video, isLoading }) {
     return (
       <>
         <Player videoId={video.id} />
-        <Typography variant="h6">{video.snippet.title}</Typography>
+        <Typography variant="h5" className={classes.title}>
+          {video.snippet.title}
+        </Typography>
       </>
     );
   }
