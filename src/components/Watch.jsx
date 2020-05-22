@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Watch({
   location,
-  handleVideo,
+  handleWatch,
   videoId,
   video,
   isLoading,
@@ -25,7 +25,7 @@ export default function Watch({
     if (!videoId) {
       const { v: urlId } = queryString.parse(location.search);
       if (!urlId) history.replace("/");
-      handleVideo(urlId, false);
+      handleWatch(urlId, false);
     }
   });
 

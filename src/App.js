@@ -29,19 +29,19 @@ export default function App() {
   const [isSearching, results] = useFetchResults(query);
   const [isLoading, video] = useFetchVideo(videoId);
 
-  const handleQuery = (input, redirect = true) => {
+  const handleSearch = (input, redirect = true) => {
     setQuery(input);
     if (redirect) history.push(`/search?q=${input}`);
   };
 
-  const handleVideo = (id, redirect = true) => {
+  const handleWatch = (id, redirect = true) => {
     setVideoId(id);
     if (redirect) history.push(`/watch?v=${id}`);
   };
 
   return (
     <>
-      <SearchBar handleQuery={handleQuery} />
+      <SearchBar handleSearch={handleSearch} />
       <div className={classes.content}>
         <Switch>
           <Route
@@ -49,7 +49,7 @@ export default function App() {
             render={(props) => (
               <Watch
                 {...props}
-                handleVideo={handleVideo}
+                handleWatch={handleWatch}
                 isLoading={isLoading}
                 videoId={videoId}
                 video={video}
@@ -61,8 +61,8 @@ export default function App() {
             render={(props) => (
               <Search
                 {...props}
-                handleQuery={handleQuery}
-                handleVideo={handleVideo}
+                handleSearch={handleSearch}
+                handleWatch={handleWatch}
                 isSearching={isSearching}
                 query={query}
                 results={results}

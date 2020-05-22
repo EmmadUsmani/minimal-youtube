@@ -37,22 +37,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchResult({ handleVideo, video }) {
+export default function SearchResult({ handleWatch, result }) {
   const classes = useStyles();
 
-  const image = video.snippet.thumbnails.high.url;
-  const title = formatTitle(video.snippet.title);
-  const channelTitle = video.snippet.channelTitle;
-  const live = video.snippet.liveBroadcastContent === "live";
-  const date = formatDate(video.snippet.publishedAt);
-  const description = video.snippet.description;
-  const videoId = video.id.videoId;
+  const image = result.snippet.thumbnails.high.url;
+  const title = formatTitle(result.snippet.title);
+  const channelTitle = result.snippet.channelTitle;
+  const live = result.snippet.liveBroadcastContent === "live";
+  const date = formatDate(result.snippet.publishedAt);
+  const description = result.snippet.description;
+  const resultId = result.id.videoId;
 
   return (
     <Card className={classes.card}>
       <CardActionArea
         className={classes.cardActionArea}
-        onClick={() => handleVideo(videoId)}
+        onClick={() => handleWatch(resultId)}
       >
         <CardMedia image={image} className={classes.cardMedia} />
         <CardContent className={classes.cardContent}>

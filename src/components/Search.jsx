@@ -6,8 +6,8 @@ import SearchResult from "./SearchResult";
 export default function Search({
   history,
   location,
-  handleQuery,
-  handleVideo,
+  handleSearch,
+  handleWatch,
   isSearching,
   query,
   results,
@@ -16,7 +16,7 @@ export default function Search({
     if (!query) {
       const { q: urlQuery } = queryString.parse(location.search);
       if (!urlQuery) history.replace("/");
-      handleQuery(urlQuery, false);
+      handleSearch(urlQuery, false);
     }
   });
 
@@ -24,11 +24,11 @@ export default function Search({
 
   return (
     <>
-      {results.map((video) => (
+      {results.map((result) => (
         <SearchResult
-          handleVideo={handleVideo}
-          video={video}
-          key={video.id.videoId}
+          handleWatch={handleWatch}
+          result={result}
+          key={result.id.videoId}
         />
       ))}
     </>
