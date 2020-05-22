@@ -34,7 +34,7 @@ export default function App() {
 
   const handleVideo = (id) => {
     setVideoId(id);
-    history.push(`/watch`);
+    history.push(`/watch?v=${id}`);
   };
 
   return (
@@ -45,7 +45,13 @@ export default function App() {
           <Route
             path="/watch"
             render={(props) => (
-              <Watch {...props} isLoading={isLoading} video={video} />
+              <Watch
+                {...props}
+                handleVideo={handleVideo}
+                isLoading={isLoading}
+                videoId={videoId}
+                video={video}
+              />
             )}
           />
           <Route
