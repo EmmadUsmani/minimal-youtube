@@ -26,10 +26,8 @@ export default function App() {
   const [isLoading, video] = useFetchVideo(videoId);
 
   const handleQuery = (input, redirect = true) => {
-    if (input) {
-      setQuery(input);
-      if (redirect) history.push(`/search?q=${input}`);
-    }
+    setQuery(input);
+    if (redirect) history.push(`/search?q=${input}`);
   };
 
   const handleVideo = (id, redirect = true) => {

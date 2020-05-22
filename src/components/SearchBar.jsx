@@ -14,7 +14,7 @@ export default function SearchBar({ handleQuery }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleQuery(input);
+    if (input) handleQuery(input);
   };
 
   const handleChange = (e) => {
