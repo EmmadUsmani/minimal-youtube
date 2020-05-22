@@ -6,6 +6,7 @@ import Watch from "./components/Watch";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
+import useFetchVideo from "./hooks/useFetchVideo";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -17,26 +18,45 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const history = useHistory();
-  const [query, setQuery] = useState("");
-  const [isLoading, results] = useFetchResults(query);
 
-  const handleQueryChange = (input) => {
+  const [query, setQuery] = useState("");
+  const [videoId, setVideoId] = useState("");
+
+  const [isSearching, results] = useFetchResults(query);
+  const [isLoading, video] = useFetchVideo(videoId);
+
+  const handleQuery = (input) => {
     if (input) {
       setQuery(input);
       history.push(`/search`);
     }
   };
 
+  const handleVideo = (id) => {
+    setVideoId(id);
+    history.push(`/watch`);
+  };
+
   return (
     <>
-      <SearchBar handleQueryChange={handleQueryChange} />
+      <SearchBar handleQuery={handleQuery} />
       <div className={classes.content}>
         <Switch>
-          <Route path="/watch" component={Watch} />
+          <Route
+            path="/watch"
+            render={(props) => (
+              <Watch {...props} isLoading={isLoading} video={video} />
+            )}
+          />
           <Route
             path="/search"
             render={(props) => (
-              <Search {...props} isLoading={isLoading} results={results} />
+              <Search
+                {...props}
+                handleVideo={handleVideo}
+                isSearching={isSearching}
+                results={results}
+              />
             )}
           />
           <Redirect to="/" />

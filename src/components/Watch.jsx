@@ -1,10 +1,20 @@
 import React from "react";
-import queryString from "query-string";
 import Player from "./Player";
+import Spinner from "./Spinner";
+import { Typography } from "@material-ui/core";
 
-export default function Watch({ history, location }) {
-  const { v: videoId } = queryString.parse(location.search);
-  if (!videoId) history.replace("/");
+export default function Watch({ history, location, video, isLoading }) {
+  console.log(video, isLoading);
 
-  return <Player videoId={videoId} />;
+  if (isLoading) return <Spinner />;
+
+  if (video.snippet) {
+    return (
+      <>
+        <Player videoId={video.id} />
+        <Typography variant="h6">{video.snippet.title}</Typography>
+      </>
+    );
+  }
+  return null;
 }

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchResult({ video }) {
+export default function SearchResult({ handleVideo, video }) {
   const classes = useStyles();
   const history = useHistory();
 
@@ -58,7 +58,10 @@ export default function SearchResult({ video }) {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea className={classes.cardActionArea} onClick={handleClick}>
+      <CardActionArea
+        className={classes.cardActionArea}
+        onClick={() => handleVideo(videoId)}
+      >
         <CardMedia image={image} className={classes.cardMedia} />
         <CardContent className={classes.cardContent}>
           <Typography variant="subtitle1">{title}</Typography>

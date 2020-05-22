@@ -8,13 +8,13 @@ const useStyles = makeStyles((theme) => ({
   input: { "padding-bottom": 7 },
 }));
 
-export default function SearchBar({ handleQueryChange }) {
+export default function SearchBar({ handleQuery }) {
   const classes = useStyles();
   const [input, setInput] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleQueryChange(input);
+    handleQuery(input);
   };
 
   const handleChange = (e) => {
