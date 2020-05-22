@@ -9,8 +9,6 @@ import {
 } from "@material-ui/core";
 import { formatTitle, formatDate } from "../utils";
 
-// TODO: handle small screens (either scale card or switch to vertical card)
-
 const useStyles = makeStyles((theme) => ({
   card: {
     marginBottom: 20,
