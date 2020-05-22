@@ -25,7 +25,7 @@ export default function Watch({
     if (!videoId) {
       const { v: urlId } = queryString.parse(location.search);
       if (!urlId) history.replace("/");
-      handleVideo(urlId);
+      handleVideo(urlId, false);
     }
   });
 

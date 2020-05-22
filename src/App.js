@@ -32,9 +32,9 @@ export default function App() {
     }
   };
 
-  const handleVideo = (id) => {
+  const handleVideo = (id, redirect = true) => {
     setVideoId(id);
-    history.push(`/watch?v=${id}`);
+    if (redirect) history.push(`/watch?v=${id}`);
   };
 
   return (
