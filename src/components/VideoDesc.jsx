@@ -4,12 +4,12 @@ import Linkify from "react-linkify";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
-    marginTop: 15,
+    marginTop: 20,
     whiteSpace: "pre-line",
   },
   buttonContainer: {
     marginTop: 20,
-    marginBottom: 40,
+    marginBottom: 30,
     width: "100%",
     display: "flex",
     justifyContent: "center",

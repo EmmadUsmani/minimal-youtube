@@ -49,7 +49,7 @@ export default function SearchResult({ handleWatch, result }) {
   const resultId = result.id.videoId;
 
   return (
-    <Card className={classes.card}>
+    <Card elevation={0} className={classes.card}>
       <CardActionArea
         className={classes.cardActionArea}
         onClick={() => handleWatch(resultId)}

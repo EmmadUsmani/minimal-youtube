@@ -10,18 +10,18 @@ import { formatTitle, formatDate, addCommas } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    marginTop: 10,
+    marginTop: 15,
   },
   row: {
     display: "flex",
     justifyContent: "space-between",
   },
-  viewsDate: {
+  rowText: {
     display: "flex",
     flexWrap: "wrap",
     width: "50%",
   },
-  views: {
+  text: {
     marginBottom: "-8px",
   },
   progressContainer: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   divider: {
-    marginTop: 10,
+    marginTop: 20,
   },
 }));
 
@@ -41,11 +41,11 @@ export default function VideoInfo({ video }) {
   const classes = useStyles();
 
   const title = formatTitle(video.snippet.title);
+  const channelTitle = video.snippet.channelTitle;
   const views = addCommas(video.statistics.viewCount);
   const date = formatDate(video.snippet.publishedAt);
   const likes = parseInt(video.statistics.likeCount);
   const dislikes = parseInt(video.statistics.dislikeCount);
-  const channelTitle = video.snippet.channelTitle;
 
   return (
     <>
@@ -53,12 +53,20 @@ export default function VideoInfo({ video }) {
         {title}
       </Typography>
       <div className={classes.row}>
-        <div className={classes.viewsDate}>
-          <Typography variant="subtitle1" className={classes.views}>
+        <div className={classes.rowText}>
+          <Typography
+            variant="subtitle1"
+            className={classes.text}
+          >{`${channelTitle} ·`}</Typography>
+          <span>&nbsp;</span>
+          <Typography variant="subtitle1" className={classes.text}>
             {`${views} views ·`}
           </Typography>
           <span>&nbsp;</span>
-          <Typography variant="subtitle1">{`${date}`}</Typography>
+          <Typography
+            variant="subtitle1"
+            className={classes.text}
+          >{`${date}`}</Typography>
         </div>
         <Tooltip
           title={`${addCommas(likes)} likes | ${addCommas(dislikes)} dislikes`}
@@ -74,7 +82,6 @@ export default function VideoInfo({ video }) {
           </div>
         </Tooltip>
       </div>
-      <Typography variant="subtitle1">{channelTitle}</Typography>
       <Divider className={classes.divider} />
     </>
   );
