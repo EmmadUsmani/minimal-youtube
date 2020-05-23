@@ -10,7 +10,6 @@ import useFetchVideo from "./hooks/useFetchVideo";
 
 // TODO: adapt SearchResult cards to small screens
 //       either scale size or switch to vertical
-// TODO: implement watch page content
 
 const useStyles = makeStyles((theme) => ({
   content: {
