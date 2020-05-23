@@ -4,6 +4,7 @@ import queryString from "query-string";
 import Player from "./Player";
 import Spinner from "./Spinner";
 import VideoInfo from "./VideoInfo";
+import VideoDesc from "./VideoDesc";
 
 export default function Watch({
   location,
@@ -28,6 +29,7 @@ export default function Watch({
     <>
       <Player videoId={videoId} />
       <VideoInfo video={video} />
+      <VideoDesc description={video.snippet.description} />
     </>
   );
 }

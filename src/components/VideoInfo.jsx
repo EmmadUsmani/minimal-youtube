@@ -68,6 +68,7 @@ export default function VideoInfo({ video }) {
             <LinearProgress
               variant="buffer"
               value={(likes / (likes + dislikes)) * 100}
+              valueBuffer={100}
               className={classes.linearProgress}
             />
           </div>
