@@ -3,13 +3,7 @@ import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import Player from "./Player";
 import Spinner from "./Spinner";
-import { Typography, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: 10,
-  },
-}));
+import VideoInfo from "./VideoInfo";
 
 export default function Watch({
   location,
@@ -18,7 +12,6 @@ export default function Watch({
   video,
   isLoading,
 }) {
-  const classes = useStyles();
   const history = useHistory();
 
   useEffect(() => {
@@ -33,10 +26,8 @@ export default function Watch({
 
   return (
     <>
-      <Player videoId={video.id} />
-      <Typography variant="h5" className={classes.title}>
-        {video.snippet.title}
-      </Typography>
+      <Player videoId={videoId} />
+      <VideoInfo video={video} />
     </>
   );
 }
