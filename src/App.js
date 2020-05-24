@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import {
+  responsiveFontSizes,
+  createMuiTheme,
+  makeStyles,
+  ThemeProvider,
+} from "@material-ui/core/styles";
 import SearchBar from "./components/SearchBar";
 import Watch from "./components/Watch";
 import Search from "./components/Search";
@@ -12,6 +17,21 @@ import useFetchVideo from "./hooks/useFetchVideo";
 // TODO: dark theme
 // TODO: different card for small screens
 // TODO: connect youtube api
+
+const theme = responsiveFontSizes(
+  createMuiTheme({
+    palette: {
+      primary: {
+        main: "#5e35b1",
+      },
+      type: "dark",
+    },
+    breakpoints: {
+      md: 860,
+      lg: 1220,
+    },
+  })
+);
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -57,41 +77,43 @@ export default function App() {
   };
 
   return (
-    <Paper>
-      <div className={classes.page}>
-        <SearchBar handleSearch={handleSearch} />
-        <div className={classes.content}>
-          <Switch>
-            <Route
-              path="/watch"
-              render={(props) => (
-                <Watch
-                  {...props}
-                  handleWatch={handleWatch}
-                  isLoading={isLoading}
-                  videoId={videoId}
-                  video={video}
-                />
-              )}
-            />
-            <Route
-              path="/search"
-              render={(props) => (
-                <Search
-                  {...props}
-                  handleSearch={handleSearch}
-                  handleWatch={handleWatch}
-                  isSearching={isSearching}
-                  query={query}
-                  results={results}
-                />
-              )}
-            />
-            <Redirect to="/" />
-          </Switch>
+    <ThemeProvider theme={theme}>
+      <Paper>
+        <div className={classes.page}>
+          <SearchBar handleSearch={handleSearch} />
+          <div className={classes.content}>
+            <Switch>
+              <Route
+                path="/watch"
+                render={(props) => (
+                  <Watch
+                    {...props}
+                    handleWatch={handleWatch}
+                    isLoading={isLoading}
+                    videoId={videoId}
+                    video={video}
+                  />
+                )}
+              />
+              <Route
+                path="/search"
+                render={(props) => (
+                  <Search
+                    {...props}
+                    handleSearch={handleSearch}
+                    handleWatch={handleWatch}
+                    isSearching={isSearching}
+                    query={query}
+                    results={results}
+                  />
+                )}
+              />
+              <Redirect to="/" />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Paper>
+      </Paper>
+    </ThemeProvider>
   );
 }
