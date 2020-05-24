@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { Paper } from "@material-ui/core";
+import { Paper, useMediaQuery } from "@material-ui/core";
 import {
   responsiveFontSizes,
   createMuiTheme,
@@ -13,6 +13,7 @@ import Search from "./components/Search";
 import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
+import useDarkMode from "./hooks/useDarkMode";
 
 // TODO: connect youtube api
 
@@ -55,7 +56,6 @@ export default function App() {
   const classes = useStyles();
   const history = useHistory();
 
-  const [isDark, setIsDark] = useState(false);
   const [query, setQuery] = useState("");
   const [videoId, setVideoId] = useState("");
   const [isSearching, results] = useFetchResults(query);
@@ -71,8 +71,12 @@ export default function App() {
     if (redirect) history.push(`/watch?v=${id}`);
   };
 
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
+  const [isDark, setIsDark] = useDarkMode(prefersDark);
+
   const handleToggleDark = () => {
     setIsDark(!isDark);
+    localStorage.setItem("isDark", !isDark);
   };
 
   themeObj.palette.type = isDark ? "dark" : "light";
