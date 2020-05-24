@@ -42,6 +42,12 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
     },
   },
+  title: {
+    marginBottom: -5,
+  },
+  description: {
+    marginTop: 5,
+  },
 }));
 
 export default function SearchResult({ handleWatch, result }) {
@@ -65,7 +71,9 @@ export default function SearchResult({ handleWatch, result }) {
           <CardMedia image={image} className={classes.cardMedia} />
         </div>
         <CardContent className={classes.cardContent}>
-          <Typography variant="subtitle1">{title}</Typography>
+          <Typography variant="h6" className={classes.title}>
+            {title}
+          </Typography>
           <Typography variant="caption">
             {`${channelTitle} · `}
             {live ? (
@@ -76,7 +84,11 @@ export default function SearchResult({ handleWatch, result }) {
               date
             )}
           </Typography>
-          <Typography variant="caption" component="p">
+          <Typography
+            variant="caption"
+            component="p"
+            className={classes.description}
+          >
             {description}
           </Typography>
         </CardContent>
