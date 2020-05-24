@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { Paper, Button } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 import {
   responsiveFontSizes,
   createMuiTheme,
@@ -14,7 +14,6 @@ import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 
-// TODO: dark theme
 // TODO: different card for small screens
 // TODO: connect youtube api
 
@@ -23,7 +22,6 @@ const themeObj = {
     primary: {
       main: "#5e35b1",
     },
-    type: "dark",
   },
   breakpoints: {
     md: 860,
@@ -50,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     marginTop: 20,
-    paddingBottom: 30,
+    paddingBottom: 50,
   },
 }));
 
@@ -58,10 +56,9 @@ export default function App() {
   const classes = useStyles();
   const history = useHistory();
 
-  const [theme, setTheme] = useState(themeObj);
+  const [isDark, setIsDark] = useState(false);
   const [query, setQuery] = useState("");
   const [videoId, setVideoId] = useState("");
-
   const [isSearching, results] = useFetchResults(query);
   const [isLoading, video] = useFetchVideo(videoId);
 
@@ -76,18 +73,22 @@ export default function App() {
   };
 
   const handleToggleDark = () => {
-    setTheme({
-      ...theme,
-      palette: {
-        ...theme.palette,
-        type: theme.palette.type === "light" ? "dark" : "light",
-      },
-    });
+    setIsDark(!isDark);
   };
 
+  const theme = responsiveFontSizes(
+    createMuiTheme({
+      ...themeObj,
+      palette: {
+        ...themeObj.palette,
+        type: isDark ? "dark" : "light",
+      },
+    })
+  );
+
   return (
-    <ThemeProvider theme={responsiveFontSizes(createMuiTheme(theme))}>
-      <Paper>
+    <ThemeProvider theme={theme}>
+      <Paper square>
         <div className={classes.page}>
           <SearchBar handleSearch={handleSearch} />
           <div className={classes.content}>
@@ -120,7 +121,7 @@ export default function App() {
               <Redirect to="/" />
             </Switch>
           </div>
-          <Footer />
+          <Footer handleToggleDark={handleToggleDark} isDark={isDark} />
         </div>
       </Paper>
     </ThemeProvider>
