@@ -8,26 +8,3 @@ body {
   min-height: 100%;
   margin: 0;
 }
-
-#root {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: auto;
-  min-height: 100vh;
-  position: relative;
-}
-
-@media all and (max-width: 860px) {
-  #root {
-    max-width: 600px;
-    width: 90%;
-  }
-}
-
-@media all and (min-width: 1220px) {
-  #root {
-    min-width: 860px;
-    width: 60%;
-  }
-}

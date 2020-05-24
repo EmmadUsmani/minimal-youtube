@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import SearchBar from "./components/SearchBar";
 import Watch from "./components/Watch";
@@ -13,6 +14,22 @@ import useFetchVideo from "./hooks/useFetchVideo";
 // TODO: connect youtube api
 
 const useStyles = makeStyles((theme) => ({
+  page: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    width: "70%",
+    margin: "auto",
+    minHeight: "100vh",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: 600,
+      width: "90%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      minWidth: 860,
+      width: "60%",
+    },
+  },
   content: {
     marginTop: 20,
     paddingBottom: 30,
@@ -40,39 +57,41 @@ export default function App() {
   };
 
   return (
-    <>
-      <SearchBar handleSearch={handleSearch} />
-      <div className={classes.content}>
-        <Switch>
-          <Route
-            path="/watch"
-            render={(props) => (
-              <Watch
-                {...props}
-                handleWatch={handleWatch}
-                isLoading={isLoading}
-                videoId={videoId}
-                video={video}
-              />
-            )}
-          />
-          <Route
-            path="/search"
-            render={(props) => (
-              <Search
-                {...props}
-                handleSearch={handleSearch}
-                handleWatch={handleWatch}
-                isSearching={isSearching}
-                query={query}
-                results={results}
-              />
-            )}
-          />
-          <Redirect to="/" />
-        </Switch>
+    <Paper>
+      <div className={classes.page}>
+        <SearchBar handleSearch={handleSearch} />
+        <div className={classes.content}>
+          <Switch>
+            <Route
+              path="/watch"
+              render={(props) => (
+                <Watch
+                  {...props}
+                  handleWatch={handleWatch}
+                  isLoading={isLoading}
+                  videoId={videoId}
+                  video={video}
+                />
+              )}
+            />
+            <Route
+              path="/search"
+              render={(props) => (
+                <Search
+                  {...props}
+                  handleSearch={handleSearch}
+                  handleWatch={handleWatch}
+                  isSearching={isSearching}
+                  query={query}
+                  results={results}
+                />
+              )}
+            />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </>
+    </Paper>
   );
 }
