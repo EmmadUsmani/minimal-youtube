@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { Paper } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
 import {
   responsiveFontSizes,
   createMuiTheme,
@@ -18,20 +18,18 @@ import useFetchVideo from "./hooks/useFetchVideo";
 // TODO: different card for small screens
 // TODO: connect youtube api
 
-const theme = responsiveFontSizes(
-  createMuiTheme({
-    palette: {
-      primary: {
-        main: "#5e35b1",
-      },
-      type: "dark",
+const themeObj = {
+  palette: {
+    primary: {
+      main: "#5e35b1",
     },
-    breakpoints: {
-      md: 860,
-      lg: 1220,
-    },
-  })
-);
+    type: "dark",
+  },
+  breakpoints: {
+    md: 860,
+    lg: 1220,
+  },
+};
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -60,6 +58,7 @@ export default function App() {
   const classes = useStyles();
   const history = useHistory();
 
+  const [theme, setTheme] = useState(themeObj);
   const [query, setQuery] = useState("");
   const [videoId, setVideoId] = useState("");
 
@@ -76,8 +75,18 @@ export default function App() {
     if (redirect) history.push(`/watch?v=${id}`);
   };
 
+  const handleToggleDark = () => {
+    setTheme({
+      ...theme,
+      palette: {
+        ...theme.palette,
+        type: theme.palette.type === "light" ? "dark" : "light",
+      },
+    });
+  };
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={responsiveFontSizes(createMuiTheme(theme))}>
       <Paper>
         <div className={classes.page}>
           <SearchBar handleSearch={handleSearch} />
