@@ -8,9 +8,9 @@ import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 
-// TODO: adapative font size
-// still consider different card for small screens
-// TODO: theme colors
+// TODO: dark theme
+// TODO: different card for small screens
+// TODO: connect youtube api
 
 const useStyles = makeStyles((theme) => ({
   content: {
