@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VideoDesc({ description }) {
+export default function VideoDesc({ isDark, description }) {
   const classes = useStyles();
 
   const [visible, setVisible] = useState(false);
@@ -29,7 +29,12 @@ export default function VideoDesc({ description }) {
     <>
       {visible ? (
         <Linkify>
-          <Typography variant="body1" className={classes.typography}>
+          <Typography
+            variant="body1"
+            className={
+              classes.typography + (isDark ? " linkDark" : " linkLight")
+            }
+          >
             {description}
           </Typography>
         </Linkify>

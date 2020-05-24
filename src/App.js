@@ -14,13 +14,12 @@ import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 
-// TODO: different card for small screens
 // TODO: connect youtube api
 
 const themeObj = {
   palette: {
     primary: {
-      main: "#5e35b1",
+      main: "#BB86FC",
     },
   },
   breakpoints: {
@@ -76,15 +75,9 @@ export default function App() {
     setIsDark(!isDark);
   };
 
-  const theme = responsiveFontSizes(
-    createMuiTheme({
-      ...themeObj,
-      palette: {
-        ...themeObj.palette,
-        type: isDark ? "dark" : "light",
-      },
-    })
-  );
+  themeObj.palette.type = isDark ? "dark" : "light";
+  themeObj.palette.primary.main = isDark ? "#BB86FC" : "#994AF1";
+  const theme = responsiveFontSizes(createMuiTheme(themeObj));
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,6 +93,7 @@ export default function App() {
                     {...props}
                     handleWatch={handleWatch}
                     isLoading={isLoading}
+                    isDark={isDark}
                     videoId={videoId}
                     video={video}
                   />

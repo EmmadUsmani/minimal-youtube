@@ -12,6 +12,7 @@ export default function Watch({
   videoId,
   video,
   isLoading,
+  isDark,
 }) {
   const history = useHistory();
 
@@ -29,7 +30,7 @@ export default function Watch({
     <>
       <Player videoId={videoId} />
       <VideoInfo video={video} />
-      <VideoDesc description={video.snippet.description} />
+      <VideoDesc description={video.snippet.description} isDark={isDark} />
     </>
   );
 }

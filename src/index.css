@@ -8,3 +8,11 @@ body {
   min-height: 100%;
   margin: 0;
 }
+
+.linkDark a {
+  color: #90caf9;
+}
+
+.linkLight a {
+  color: #42a5f5;
+}
