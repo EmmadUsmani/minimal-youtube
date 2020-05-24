@@ -14,20 +14,27 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
   },
   cardActionArea: {
+    position: "relative",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
+  },
+  mediaContainer: {
     position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    flexBasis: "20vh",
+    flexGrow: 0,
+    flexShrink: 0,
   },
   cardMedia: {
-    height: 150,
-    flexBasis: 300,
+    flexBasis: "11.25vh",
     flexGrow: 0,
     flexShrink: 0,
   },
   cardContent: {
-    height: 142,
-    paddingTop: 8,
+    height: "10.75vh",
+    paddingTop: "0.5vh",
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 0,
@@ -54,7 +61,9 @@ export default function SearchResult({ handleWatch, result }) {
         className={classes.cardActionArea}
         onClick={() => handleWatch(resultId)}
       >
-        <CardMedia image={image} className={classes.cardMedia} />
+        <div className={classes.mediaContainer}>
+          <CardMedia image={image} className={classes.cardMedia} />
+        </div>
         <CardContent className={classes.cardContent}>
           <Typography variant="subtitle1">{title}</Typography>
           <Typography variant="caption">

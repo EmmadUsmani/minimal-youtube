@@ -8,8 +8,9 @@ import Footer from "./components/Footer";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 
-// TODO: adapt SearchResult cards to small screens
-//       either scale size or switch to vertical
+// TODO: adapative font size
+// still consider different card for small screens
+// TODO: theme colors
 
 const useStyles = makeStyles((theme) => ({
   content: {
