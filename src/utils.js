@@ -1,5 +1,7 @@
+import { AllHtmlEntities as entities } from "html-entities";
+
 export function formatTitle(title) {
-  return title.replace("&amp;", "&").substr(0, 80);
+  return entities.decode(title);
 }
 
 export function formatDate(dateStr) {
