@@ -24,6 +24,7 @@ const themeObj = {
     },
   },
   breakpoints: {
+    sm: 550,
     md: 860,
     lg: 1220,
   },

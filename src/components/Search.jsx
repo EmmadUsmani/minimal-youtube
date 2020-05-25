@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import queryString from "query-string";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Spinner from "./Spinner";
 import SearchResult from "./SearchResult";
+import SearchResultVertical from "./SearchResultVertical";
 
 export default function Search({
   history,
@@ -12,6 +14,7 @@ export default function Search({
   query,
   results,
 }) {
+  const smallScreen = useMediaQuery("(max-width: 550px");
   useEffect(() => {
     if (!query) {
       const { q: urlQuery } = queryString.parse(location.search);
@@ -24,13 +27,21 @@ export default function Search({
 
   return (
     <>
-      {results.map((result) => (
-        <SearchResult
-          handleWatch={handleWatch}
-          result={result}
-          key={result.id.videoId}
-        />
-      ))}
+      {results.map((result) =>
+        smallScreen ? (
+          <SearchResultVertical
+            handleWatch={handleWatch}
+            result={result}
+            key={result.id.videoId}
+          />
+        ) : (
+          <SearchResult
+            handleWatch={handleWatch}
+            result={result}
+            key={result.id.videoId}
+          />
+        )
+      )}
     </>
   );
 }
