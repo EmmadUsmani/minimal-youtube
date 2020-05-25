@@ -7,8 +7,8 @@ export async function search(query) {
   const response = await Axios.get("/search", {
     params: {
       part: "snippet",
-      maxResults: 10,
       type: "video",
+      maxResults: 10,
       q: query,
       key,
     },
@@ -16,4 +16,15 @@ export async function search(query) {
   return response.data.items;
 }
 
-export default { search };
+export async function watch(videoId) {
+  const response = await Axios.get("/videos", {
+    params: {
+      part: "snippet, statistics",
+      id: videoId,
+      key,
+    },
+  });
+  return response.data.items[0];
+}
+
+export default { search, watch };

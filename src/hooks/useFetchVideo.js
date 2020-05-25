@@ -1,23 +1,18 @@
 import { useState, useEffect } from "react";
-import { placeholderVideos } from "../constants";
+import youtubeAPI from "../youtubeAPI";
 
 export default function useFetchVideo(videoId) {
   const [isLoading, setIsLoading] = useState(false);
   const [video, setVideo] = useState({});
 
   useEffect(() => {
-    if (videoId) {
+    async function fetchVideo() {
       setIsLoading(true);
-
-      // simulating video load
-      setTimeout(() => {
-        setVideo(
-          placeholderVideos.find((response) => response.items[0].id === videoId)
-            .items[0]
-        );
-        setIsLoading(false);
-      }, 500);
+      setVideo(await youtubeAPI.watch(videoId));
+      setIsLoading(false);
     }
+
+    if (videoId) fetchVideo();
   }, [videoId]);
 
   return [isLoading, video];

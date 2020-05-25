@@ -15,7 +15,6 @@ import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 import useDarkMode from "./hooks/useDarkMode";
 
-// TODO: connect youtube api
 // TODO: handle html special entities
 
 const themeObj = {
