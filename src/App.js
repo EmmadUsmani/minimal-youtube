@@ -77,6 +77,9 @@ export default function App() {
     if (redirect) history.push(`/watch?v=${id}`);
   };
 
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
+  const [isDark, setIsDark] = useDarkMode(prefersDark);
+
   const handleToggleDark = () => {
     setIsDark(!isDark);
     localStorage.setItem("isDark", !isDark);
