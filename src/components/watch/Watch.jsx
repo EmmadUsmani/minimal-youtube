@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import queryString from "query-string";
-import Player from "./Player";
-import Spinner from "./Spinner";
+import Spinner from "../common/Spinner";
+import Player from "./VideoPlayer";
 import VideoInfo from "./VideoInfo";
 import VideoDesc from "./VideoDesc";
 
 export default function Watch({
+  history,
   location,
   handleWatch,
   videoId,
@@ -14,8 +14,7 @@ export default function Watch({
   isLoading,
   isDark,
 }) {
-  const history = useHistory();
-
+  // handle query string in URL
   useEffect(() => {
     if (!videoId) {
       const { v: urlId } = queryString.parse(location.search);

@@ -7,13 +7,15 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import SearchBar from "./components/SearchBar";
-import Watch from "./components/Watch";
-import Search from "./components/Search";
-import Footer from "./components/Footer";
+import SearchBar from "./components/common/SearchBar";
+import Footer from "./components/common/Footer";
+import Search from "./components/search/Search";
+import Watch from "./components/watch/Watch";
 import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 import useDarkMode from "./hooks/useDarkMode";
+
+// TODO: deploy
 
 const themeObj = {
   palette: {
@@ -59,6 +61,13 @@ export default function App() {
   const [videoId, setVideoId] = useState("");
   const [isSearching, results] = useFetchResults(query);
   const [isLoading, video] = useFetchVideo(videoId);
+  const [isDark, setIsDark] = useDarkMode(
+    useMediaQuery("(prefers-color-scheme: dark)")
+  );
+
+  themeObj.palette.type = isDark ? "dark" : "light";
+  themeObj.palette.primary.main = isDark ? "#BB86FC" : "#994AF1";
+  const theme = responsiveFontSizes(createMuiTheme(themeObj));
 
   const handleSearch = (input, redirect = true) => {
     setQuery(input);
@@ -70,17 +79,10 @@ export default function App() {
     if (redirect) history.push(`/watch?v=${id}`);
   };
 
-  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
-  const [isDark, setIsDark] = useDarkMode(prefersDark);
-
   const handleToggleDark = () => {
     setIsDark(!isDark);
     localStorage.setItem("isDark", !isDark);
   };
-
-  themeObj.palette.type = isDark ? "dark" : "light";
-  themeObj.palette.primary.main = isDark ? "#BB86FC" : "#994AF1";
-  const theme = responsiveFontSizes(createMuiTheme(themeObj));
 
   return (
     <ThemeProvider theme={theme}>

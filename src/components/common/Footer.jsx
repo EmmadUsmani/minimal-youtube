@@ -1,6 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
 import { IconButton, Typography, Link } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import BrightnessHigh from "@material-ui/icons/BrightnessHigh";
 import Brightness4 from "@material-ui/icons/Brightness4";
 

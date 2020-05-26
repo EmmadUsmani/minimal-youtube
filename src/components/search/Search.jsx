@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import queryString from "query-string";
-import Spinner from "./Spinner";
+import Spinner from "../common/Spinner";
 import SearchResult from "./SearchResult";
 
 export default function Search({

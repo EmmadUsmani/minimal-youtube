@@ -1,12 +1,12 @@
 import React from "react";
 import {
   Typography,
-  makeStyles,
   LinearProgress,
   Tooltip,
   Divider,
 } from "@material-ui/core";
-import { formatTitle, formatDate, addCommas } from "../utils";
+import { makeStyles } from "@material-ui/core/styles";
+import { formatTitle, formatDate, addCommas } from "../../utils";
 
 const useStyles = makeStyles((theme) => ({
   title: {

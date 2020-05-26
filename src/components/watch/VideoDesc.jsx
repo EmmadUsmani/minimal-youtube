@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { makeStyles, Typography, Button } from "@material-ui/core";
 import Linkify from "react-linkify";
+import { Typography, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
+  },
+  button: {
+    textTransform: "none",
   },
 }));
 
@@ -44,7 +48,7 @@ export default function VideoDesc({ isDark, description }) {
           color="primary"
           variant="outlined"
           onClick={handleClick}
-          style={{ textTransform: "none" }}
+          className={classes.button}
         >
           {visible ? "Hide" : "Show"} Description
         </Button>

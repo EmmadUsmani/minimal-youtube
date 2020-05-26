@@ -5,10 +5,10 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  makeStyles,
   useMediaQuery,
 } from "@material-ui/core";
-import { formatTitle, formatDate } from "../utils";
+import { makeStyles } from "@material-ui/core/styles";
+import { formatTitle, formatDate } from "../../utils";
 
 const styles = {
   card: {
@@ -66,6 +66,7 @@ const stylesAlt = {
 };
 
 export default function SearchResult({ handleWatch, result }) {
+  // use vertical card on small screens
   const smallScreen = useMediaQuery("(max-width: 550px");
   const useStyles = makeStyles((theme) => (smallScreen ? stylesAlt : styles));
   const classes = useStyles();
