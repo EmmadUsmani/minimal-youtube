@@ -15,12 +15,10 @@ import useFetchResults from "./hooks/useFetchResults";
 import useFetchVideo from "./hooks/useFetchVideo";
 import useDarkMode from "./hooks/useDarkMode";
 
-// TODO: deploy
-
 const themeObj = {
   palette: {
     primary: {
-      main: "#BB86FC",
+      main: "#BB86FC", // purple
     },
   },
   breakpoints: {
