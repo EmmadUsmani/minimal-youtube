@@ -3,17 +3,22 @@ import youtubeAPI from "../youtubeAPI";
 
 export default function useFetchVideo(videoId) {
   const [isLoading, setIsLoading] = useState(false);
+  const [watchFailed, setWatchFailed] = useState(false);
   const [video, setVideo] = useState({});
 
   useEffect(() => {
     async function fetchVideo() {
       setIsLoading(true);
-      setVideo(await youtubeAPI.watch(videoId));
+      try {
+        setVideo(await youtubeAPI.watch(videoId));
+      } catch {
+        setWatchFailed(true);
+      }
       setIsLoading(false);
     }
 
     if (videoId) fetchVideo();
   }, [videoId]);
 
-  return [isLoading, video];
+  return [isLoading, watchFailed, video];
 }

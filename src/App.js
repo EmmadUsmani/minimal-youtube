@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { Paper, useMediaQuery } from "@material-ui/core";
+import { Paper, useMediaQuery, Typography } from "@material-ui/core";
 import {
   responsiveFontSizes,
   createMuiTheme,
@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
     paddingBottom: 50,
   },
+  error: {
+    textAlign: "center",
+  },
 }));
 
 export default function App() {
@@ -57,8 +60,8 @@ export default function App() {
 
   const [query, setQuery] = useState("");
   const [videoId, setVideoId] = useState("");
-  const [isSearching, results] = useFetchResults(query);
-  const [isLoading, video] = useFetchVideo(videoId);
+  const [isSearching, searchFailed, results] = useFetchResults(query);
+  const [isLoading, watchFailed, video] = useFetchVideo(videoId);
   const [isDark, setIsDark] = useDarkMode(
     useMediaQuery("(prefers-color-scheme: dark)")
   );
@@ -82,41 +85,53 @@ export default function App() {
     localStorage.setItem("isDark", !isDark);
   };
 
+  const renderContent = () => (
+    <Switch>
+      <Route
+        path="/watch"
+        render={(props) => (
+          <Watch
+            {...props}
+            handleWatch={handleWatch}
+            isLoading={isLoading}
+            isDark={isDark}
+            videoId={videoId}
+            video={video}
+          />
+        )}
+      />
+      <Route
+        path="/search"
+        render={(props) => (
+          <Search
+            {...props}
+            handleSearch={handleSearch}
+            handleWatch={handleWatch}
+            isSearching={isSearching}
+            query={query}
+            results={results}
+          />
+        )}
+      />
+      <Redirect to="/" />
+    </Switch>
+  );
+
+  const renderErrorMessage = () => (
+    <Typography variant="h4" color="error" className={classes.error}>
+      Youtube API limit exceeded :(
+    </Typography>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <Paper square>
         <div className={classes.page}>
           <SearchBar handleSearch={handleSearch} />
           <div className={classes.content}>
-            <Switch>
-              <Route
-                path="/watch"
-                render={(props) => (
-                  <Watch
-                    {...props}
-                    handleWatch={handleWatch}
-                    isLoading={isLoading}
-                    isDark={isDark}
-                    videoId={videoId}
-                    video={video}
-                  />
-                )}
-              />
-              <Route
-                path="/search"
-                render={(props) => (
-                  <Search
-                    {...props}
-                    handleSearch={handleSearch}
-                    handleWatch={handleWatch}
-                    isSearching={isSearching}
-                    query={query}
-                    results={results}
-                  />
-                )}
-              />
-              <Redirect to="/" />
-            </Switch>
+            {searchFailed || watchFailed
+              ? renderErrorMessage()
+              : renderContent()}
           </div>
           <Footer handleToggleDark={handleToggleDark} isDark={isDark} />
         </div>
