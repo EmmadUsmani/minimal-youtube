@@ -118,8 +118,8 @@ export default function App() {
   );
 
   const renderErrorMessage = () => (
-    <Typography variant="h4" color="error" className={classes.error}>
-      Youtube API limit exceeded :(
+    <Typography variant="h5" color="primary" className={classes.error}>
+      Youtube API limit exceeded.
     </Typography>
   );
 
