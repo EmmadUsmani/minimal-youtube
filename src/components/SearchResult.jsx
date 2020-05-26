@@ -6,10 +6,11 @@ import {
   CardContent,
   Typography,
   makeStyles,
+  useMediaQuery,
 } from "@material-ui/core";
 import { formatTitle, formatDate } from "../utils";
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
   card: {
     marginBottom: 20,
   },
@@ -48,9 +49,25 @@ const useStyles = makeStyles((theme) => ({
   description: {
     marginTop: 5,
   },
-}));
+};
+
+const stylesAlt = {
+  card: {
+    width: "100%",
+    marginBottom: 5,
+  },
+  cardMedia: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+  cardContent: {
+    height: 150,
+  },
+};
 
 export default function SearchResult({ handleWatch, result }) {
+  const smallScreen = useMediaQuery("(max-width: 550px");
+  const useStyles = makeStyles((theme) => (smallScreen ? stylesAlt : styles));
   const classes = useStyles();
 
   const image = result.snippet.thumbnails.high.url;
