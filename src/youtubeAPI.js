@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const key = "AIzaSyD8eHtwlHkLxiivOycFs4gbKWZNCELO1fw";
+const key = "AIzaSyAUEOeB5TjjD8P8ETkpjM0P1ddjBttJ_pI";
 Axios.defaults.baseURL = "https://www.googleapis.com/youtube/v3/";
 
 export async function search(query) {
